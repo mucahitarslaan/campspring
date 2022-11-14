@@ -1,16 +1,15 @@
 package com.mucahitarslan.RentACar.webApi.controllers;
 
 import com.mucahitarslan.RentACar.business.abstracts.IBrandService;
-import com.mucahitarslan.RentACar.entities.concretes.Brand;
+import com.mucahitarslan.RentACar.business.concretes.requests.CreateBrandRequest;
+import com.mucahitarslan.RentACar.business.concretes.responses.GetAllBrandsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/brands")
+@RequestMapping("/api/branßds")
 public class BrandsController
 {
     private IBrandService iBrandService;
@@ -21,8 +20,14 @@ public class BrandsController
     }
 
     @GetMapping("/getall")
-    public List<Brand> getAll()
+    public List<GetAllBrandsResponse> getAll()
     {
         return iBrandService.getAll();
+    }
+
+    @PostMapping("/add")
+    public void add(@RequestBody CreateBrandRequest createBrandRequest)
+    {
+        this.iBrandService.add(createBrandRequest);
     }
 }
