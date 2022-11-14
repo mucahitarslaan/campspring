@@ -20,6 +20,6 @@ public class BrandManager implements IBrandService
 
     @Override
     public List<Brand> getAll() {
-        return iBrandRepository.getAll();
+        return iBrandRepository.findAll();
     }
 }
